@@ -1,0 +1,9 @@
+<h1>All cocktails:</h1>
+<% @cocktails.each do |cocktail| %>
+<div class="card-product">
+  <img src="https://picsum.photos/200" />
+  <div class="card-product-infos">
+    <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+  </div>
+</div>
+<% end %>

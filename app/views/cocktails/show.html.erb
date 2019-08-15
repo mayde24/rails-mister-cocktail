@@ -1,0 +1,43 @@
+<div class="card-product">
+  <img src="https://picsum.photos/200" />
+  <div class="card-product-infos">
+    <h2><%= @cocktail.name  %></h2>
+    <p> <%= @cocktail.description %> </p>
+  </div>
+</div>
+
+<div class="column">
+  <% @cocktail.doses.each do |dose| %>
+    <div class="row-between">
+      <div><p> <%= dose.ingredient.name %> </p></div>
+      <div><p> <%= dose.description %> </p></div>
+      <div>
+        <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: "Are you sure?"}, class: "image" do %>
+          <%= image_tag "https://cdn.pixabay.com/photo/2011/08/14/18/20/garbage-can-8665_960_720.png" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= simple_form_for([@cocktail, @dose]) do |f| %>
+    <div>
+      <%= f.association :ingredient %>
+    </div>
+    <div>
+      <%= f.input :description %>
+    </div>
+
+
+      <%= f.submit %>
+
+  <% end %>
+</div>
+
+<div class="button-container">
+  <div class="button">
+    <%= link_to "Destroy \"#{@cocktail.name}\"", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?"} %>
+  </div>
+  <div class="button">
+    <%= link_to "Edit the cocktail", edit_cocktail_path(@cocktail) %>
+  </div>
+</div>

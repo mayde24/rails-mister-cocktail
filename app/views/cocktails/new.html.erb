@@ -1,0 +1,10 @@
+<h1 style="text-align:center">Create a new cocktail:</h1>
+
+<%= simple_form_for(@cocktail) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+  <div class="center">
+    <%= f.submit %>
+  </div>
+<% end %>
